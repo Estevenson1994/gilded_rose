@@ -13,6 +13,8 @@ class GildedRose
       elsif item.name == "Backstage passes to a TAFKAL80ETC concert"
         if item.sell_in > 10 
           item.quality += 1
+        elsif item.sell_in > 5
+          item.quality += 2
         end
       end
 
