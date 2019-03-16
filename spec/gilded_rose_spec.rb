@@ -11,13 +11,13 @@ describe GildedRose do
       expect(items[0].name).to eq "foo"
     end
 
-    it 'sell_in value decreases by one each day' do
+    it 'decreases sell_in value by one each day' do
       items = [Item.new("item", 1 , 0)]
       gilded_rose = GildedRose.new(items)
       expect { gilded_rose.update_quality }.to change { items[0].sell_in}.by(-1)
     end
 
-    it 'quality decreases by one each day' do
+    it 'decreases quality by one each day' do
       items = [Item.new("item", 1, 1)]
       gilded_rose = GildedRose.new(items)
       expect { gilded_rose.update_quality }.to change { items[0].quality}.by(-1)
