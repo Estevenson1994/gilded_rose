@@ -17,6 +17,11 @@ describe GildedRose do
       expect { gilded_rose.update_quality }.to change { items[0].sell_in}.by(-1)
     end
 
+    it 'quality decreases by one each day' do
+      items = [Item.new("item", 1, 1)]
+      gilded_rose = GildedRose.new(items)
+      expect { gilded_rose.update_quality }.to change { items[0].quality}.by(-1)
+    end
   end
 
 end
