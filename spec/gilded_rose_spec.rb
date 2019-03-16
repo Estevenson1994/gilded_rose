@@ -28,9 +28,13 @@ describe GildedRose do
       gilded_rose = GildedRose.new(items)
       expect { gilded_rose.update_quality }.to change { items[0].quality}.by(0)
     end
-
   end
 
-
-
+  describe "#regular item" do
+    it 'decreases in quality by two after sell_in day has passed' do
+      items = [Item.new("item", 0, 10)]
+      gilded_rose = GildedRose.new(items)
+      expect { gilded_rose.update_quality }.to change { items[0].quality}.by(-2)
+    end
+  end
 end
