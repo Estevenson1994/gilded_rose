@@ -72,4 +72,41 @@ describe GildedRose do
     end
   end
 
+  describe '#Backstage Passes' do
+    it 'increase in quaility by 1 when there are more than 10 days left' do
+      items = [Item.new("Backstage passes to a TAFKAL80ETC concert", 20, 10 )]
+      gilded_rose = GildedRose.new(items)
+      expect { gilded_rose.update_quality }.to change { items[0].quality}.by(1)
+    end
+
+    it 'increase in quaility by 2 when there are 10 days left' do
+      items = [Item.new("Backstage passes to a TAFKAL80ETC concert", 10, 10 )]
+      gilded_rose = GildedRose.new(items)
+      expect { gilded_rose.update_quality }.to change { items[0].quality}.by(2)
+    end
+
+    it 'increase in quaility by 3 when there are 5 days left' do
+      items = [Item.new("Backstage passes to a TAFKAL80ETC concert", 5, 10 )]
+      gilded_rose = GildedRose.new(items)
+      expect { gilded_rose.update_quality }.to change { items[0].quality}.by(3)
+    end
+
+    it 'quality drops to 0 after the concert' do
+      items = [Item.new("Backstage passes to a TAFKAL80ETC concert", 0, 10 )]
+      GildedRose.new(items).update_quality
+      expect(items[0].quality).to eq 0
+    end
+
+    it 'quality never increases more than 50' do
+      items = [Item.new("Backstage passes to a TAFKAL80ETC concert", 2, 50 )]
+      gilded_rose = GildedRose.new(items)
+      expect { gilded_rose.update_quality }.to change { items[0].quality}.by(0)
+    end
+
+    it 'quality stays at 0 after the concert' do
+      items = [Item.new("Backstage passes to a TAFKAL80ETC concert", 0, 0 )]
+      gilded_rose = GildedRose.new(items)
+      expect { gilded_rose.update_quality }.to change { items[0].quality}.by(0)
+    end
+  end
 end
