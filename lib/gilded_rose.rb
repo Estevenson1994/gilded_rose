@@ -13,12 +13,7 @@ class GildedRose
       elsif item.name == "Backstage passes to a TAFKAL80ETC concert"
         backstage_passes(item)
       elsif item.name != "Sulfuras, Hand of Ragnaros"
-        if item.quality > 0 && item.sell_in > 0
-          item.quality -= 1
-        elsif item.quality > 0 && item.sell_in <= 0
-          item.quality -= 2
-        end
-        item.sell_in -= 1
+        normal_item(item)
       end
     end
   end
@@ -38,6 +33,13 @@ class GildedRose
         item.quality = 50 if item.quality > 50
         item.quality = 0 if item.sell_in <= 0
         item.sell_in -= 1
+  end
+
+
+  def normal_item(item)
+    item.quality -= 1 if item.quality > 0
+    item.quality -= 1 if item.sell_in <= 0 && item.quality > 0
+    item.sell_in -= 1
   end
 end
 #   def update_quality
