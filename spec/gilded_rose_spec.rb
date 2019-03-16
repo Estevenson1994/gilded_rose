@@ -17,12 +17,6 @@ describe GildedRose do
       expect { gilded_rose.update_quality }.to change { items[0].sell_in}.by(-1)
     end
 
-    it 'decreases quality by one each day' do
-      items = [Item.new("item", 1, 1)]
-      gilded_rose = GildedRose.new(items)
-      expect { gilded_rose.update_quality }.to change { items[0].quality}.by(-1)
-    end
-
     it 'never lowers quality below 0' do
       items = [Item.new("item", 1, 0)]
       gilded_rose = GildedRose.new(items)
@@ -35,6 +29,12 @@ describe GildedRose do
       items = [Item.new("item", 0, 10)]
       gilded_rose = GildedRose.new(items)
       expect { gilded_rose.update_quality }.to change { items[0].quality}.by(-2)
+    end
+
+    it 'decreases quality by one each day' do
+      items = [Item.new("item", 1, 1)]
+      gilded_rose = GildedRose.new(items)
+      expect { gilded_rose.update_quality }.to change { items[0].quality}.by(-1)
     end
   end
 
@@ -50,5 +50,26 @@ describe GildedRose do
       gilded_rose = GildedRose.new(items)
       expect { gilded_rose.update_quality }.to change { items[0].quality}.by(0)
     end
+
+    it 'increases in quality by 2 after sell_in date' do
+      items = [Item.new("Aged Brie",0, 20)]
+      gilded_rose = GildedRose.new(items)
+      expect { gilded_rose.update_quality }.to change { items[0].quality}.by(2)
+    end
   end
+
+  describe '#Sulfuras' do
+    it 'quality does not change' do
+      items = [Item.new("Sulfuras, Hand of Ragnaros", 1, 80)]
+      gilded_rose = GildedRose.new(items)
+      expect { gilded_rose.update_quality }.to change { items[0].quality}.by(0)
+    end
+
+    it 'sell_in does not change' do
+      items = [Item.new("Sulfuras, Hand of Ragnaros", 1, 80)]
+      gilded_rose = GildedRose.new(items)
+      expect { gilded_rose.update_quality }.to change { items[0].sell_in}.by(0)
+    end
+  end
+
 end
