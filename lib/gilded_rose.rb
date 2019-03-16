@@ -10,7 +10,12 @@ class GildedRose
     @items.each do |item|
       if item.name == "Aged Brie"
         aged_brie(item)
+      elsif item.name == "Backstage passes to a TAFKAL80ETC concert"
+        if item.sell_in > 10 
+          item.quality += 1
+        end
       end
+
     end
   end
 
