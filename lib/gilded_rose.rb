@@ -11,19 +11,26 @@ class GildedRose
       if item.name == "Aged Brie"
         aged_brie(item)
       elsif item.name == "Backstage passes to a TAFKAL80ETC concert"
-        item.quality += 1
-        item.quality += 1 if item.sell_in < 11
-        item.quality += 1 if item.sell_in < 6
-        item.quality = 50 if item.quality > 50
-        item.quality = 0 if item.sell_in <= 0
+        backstage_passes(item)
       end
     end
   end
+
+  private
 
   def aged_brie(item)
     item.sell_in > 0 ? item.quality += 1 : item.quality += 2
     item.quality = 50 if item.quality > 50
     item.sell_in -= 1
+  end
+
+  def backstage_passes(item)
+        item.quality += 1
+        item.quality += 1 if item.sell_in < 11
+        item.quality += 1 if item.sell_in < 6
+        item.quality = 50 if item.quality > 50
+        item.quality = 0 if item.sell_in <= 0
+        item.sell_in -= 1
   end
 end
 #   def update_quality
