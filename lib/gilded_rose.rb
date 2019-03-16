@@ -9,13 +9,16 @@ class GildedRose
 
     @items.each do |item|
       if item.name == "Aged Brie"
-        item.sell_in > 0 ? item.quality += 1 : item.quality += 2
-        item.quality = 50 if item.quality > 50
-        item.sell_in -= 1
+        aged_brie(item)
       end
     end
   end
 
+  def aged_brie(item)
+    item.sell_in > 0 ? item.quality += 1 : item.quality += 2
+    item.quality = 50 if item.quality > 50
+    item.sell_in -= 1
+  end
 end
 #   def update_quality
 #     @items.each do |item|
