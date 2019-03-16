@@ -11,17 +11,12 @@ class GildedRose
       if item.name == "Aged Brie"
         aged_brie(item)
       elsif item.name == "Backstage passes to a TAFKAL80ETC concert"
-        if item.sell_in > 10 
-          item.quality += 1
-        elsif item.sell_in > 5
-          item.quality += 2
-        elsif item.sell_in > 0
-          item.quality += 3
-        else
-          item.quality = 0
-        end
+        item.quality += 1
+        item.quality += 1 if item.sell_in < 11
+        item.quality += 1 if item.sell_in < 6
+        item.quality = 50 if item.quality > 50
+        item.quality = 0 if item.sell_in <= 0
       end
-
     end
   end
 
