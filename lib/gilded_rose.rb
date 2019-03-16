@@ -14,6 +14,7 @@ class GildedRose
         else 
           item.quality += 2
         end
+        item.sell_in -= 1
       end
     end
   end
