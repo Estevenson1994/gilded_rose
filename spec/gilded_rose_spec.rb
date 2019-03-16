@@ -22,6 +22,15 @@ describe GildedRose do
       gilded_rose = GildedRose.new(items)
       expect { gilded_rose.update_quality }.to change { items[0].quality}.by(-1)
     end
+
+    it 'never lowers quality below 0' do
+      items = [Item.new("item", 1, 0)]
+      gilded_rose = GildedRose.new(items)
+      expect { gilded_rose.update_quality }.to change { items[0].quality}.by(0)
+    end
+
   end
+
+
 
 end
