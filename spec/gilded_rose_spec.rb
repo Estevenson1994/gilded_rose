@@ -40,19 +40,19 @@ describe GildedRose do
 
   describe '#aged brie' do
     it 'increases in quality as it gets older' do
-      items = [Item.new("Aged Brie", 10, 10)]
+      items = [Item.new(GildedRose::AGED_BRIE, 10, 10)]
       gilded_rose = GildedRose.new(items)
       expect { gilded_rose.update_quality }.to change { items[0].quality}.by(1)
     end
 
     it 'quality never goes above 50' do
-      items = [Item.new("Aged Brie", 10, 50)]
+      items = [Item.new(GildedRose::AGED_BRIE, 10, 50)]
       gilded_rose = GildedRose.new(items)
       expect { gilded_rose.update_quality }.to change { items[0].quality}.by(0)
     end
 
     it 'increases in quality by 2 after sell_in date' do
-      items = [Item.new("Aged Brie",0, 20)]
+      items = [Item.new(GildedRose::AGED_BRIE, 0, 20)]
       gilded_rose = GildedRose.new(items)
       expect { gilded_rose.update_quality }.to change { items[0].quality}.by(2)
     end
