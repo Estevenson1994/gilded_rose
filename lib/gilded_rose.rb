@@ -18,7 +18,7 @@ class GildedRose
       elsif item.name == "Backstage passes to a TAFKAL80ETC concert"
         update_backstage_passes(item)
       elsif item.name != "Sulfuras, Hand of Ragnaros"
-        normal_item(item)
+        update_normal_item(item)
       end
     end
   end

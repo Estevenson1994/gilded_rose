@@ -1,6 +1,6 @@
 module Normal_item
 
-  def normal_item(item)
+  def update_normal_item(item)
     remove_one_from_quality(item) if quality_is_greater_than_0(item)
     remove_one_from_quality(item) if item_has_expired(item) && quality_is_greater_than_0(item)
     remove_one_day_from_sell_in(item)
