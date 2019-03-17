@@ -8,7 +8,6 @@ class GildedRose
     @items = items
   end
 
-
   def update_quality
 
     @items.each do |item|
@@ -24,16 +23,22 @@ class GildedRose
 
   private
 
-
-  def backstage_passes(item)
-        item.quality += 1
-        item.quality += 1 if item.sell_in < 11
-        item.quality += 1 if item.sell_in < 6
-        item.quality = 50 if item.quality > 50
-        item.quality = 0 if item.sell_in <= 0
-        item.sell_in -= 1
+  def remove_one_day_from_sell_in(item)
+    item.sell_in -= 1
   end
 
+  def dont_let_quality_go_above_50(item)
+    item.quality = 50 if item.quality > 50
+  end
+
+  def backstage_passes(item)
+    item.quality += 1
+    item.quality += 1 if item.sell_in < 11
+    item.quality += 1 if item.sell_in < 6
+    item.quality = 50 if item.quality > 50
+    item.quality = 0 if item.sell_in <= 0
+    item.sell_in -= 1
+  end
 
   def normal_item(item)
     item.quality -= 1 if item.quality > 0
