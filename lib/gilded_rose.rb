@@ -5,20 +5,19 @@ require_relative 'conjured_item'
 
 class GildedRose
 
-  include Aged_brie, Backstage_passes, Normal_item, Conjured_item
+  include AgedBrie, BackstagePasses, NormalItem, ConjuredItem
 
   def initialize(items)
     @items = items
   end
 
   def update_quality
-
     @items.each do |item|
       if item.name == "Aged Brie"
         update_aged_brie(item)
       elsif item.name == "Backstage passes to a TAFKAL80ETC concert"
         update_backstage_passes(item)
-      elsif item.name.match(/(?i)conjured/)
+      elsif item.name =~ /(?i)conjured/
         update_conjured_item(item)
       elsif item.name != "Sulfuras, Hand of Ragnaros"
         update_normal_item(item)
@@ -39,6 +38,5 @@ class GildedRose
   def item_has_expired(item)
     item.sell_in <= 0
   end
-  
 
 end

@@ -1,4 +1,4 @@
-module Aged_brie
+module AgedBrie
 
   def update_aged_brie(item)
     update_quality_if_before_sell_in(item)

@@ -1,4 +1,4 @@
-module Normal_item
+module NormalItem
 
   def update_normal_item(item)
     remove_one_from_quality(item) if quality_is_greater_than_0(item)

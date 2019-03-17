@@ -49,9 +49,7 @@ Metrics/BlockLength:
 
 AllCops:
   Exclude:
-    - "db/schema.rb"
-    - "db/migrate/*"
-    - "config/initializers/devise.rb"
+    - "texttest_fixture.rb"
 
 # Code Style
 # ==========
