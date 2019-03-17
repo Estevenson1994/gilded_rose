@@ -1,4 +1,8 @@
+require_relative 'aged_brie'
+
 class GildedRose
+
+  include Aged_brie
 
   def initialize(items)
     @items = items
@@ -20,11 +24,6 @@ class GildedRose
 
   private
 
-  def aged_brie(item)
-    item.sell_in > 0 ? item.quality += 1 : item.quality += 2
-    item.quality = 50 if item.quality > 50
-    item.sell_in -= 1
-  end
 
   def backstage_passes(item)
         item.quality += 1
