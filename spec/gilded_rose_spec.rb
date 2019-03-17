@@ -121,6 +121,12 @@ describe GildedRose do
       gilded_rose = GildedRose.new(items)
       expect { gilded_rose.update_quality }.to change { items[0].quality }.by(0)
     end
+
+    it 'quality drops by 4 after sell_in has passed' do
+      items = [Item.new("Conjured item", 0, 10)]
+      gilded_rose = GildedRose.new(items)
+      expect { gilded_rose.update_quality }.to change { items[0].quality }.by(-4)
+    end
   end
 
 end

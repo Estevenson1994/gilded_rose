@@ -36,6 +36,10 @@ class GildedRose
     item.quality = 50 if item.quality > 50
   end
 
+  def item_has_expired(item)
+    item.sell_in <= 0
+  end
+
 
 end
 #   def update_quality
