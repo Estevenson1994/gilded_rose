@@ -13,9 +13,9 @@ class GildedRose
 
     @items.each do |item|
       if item.name == "Aged Brie"
-        aged_brie(item)
+        update_aged_brie(item)
       elsif item.name == "Backstage passes to a TAFKAL80ETC concert"
-        backstage_passes(item)
+        update_backstage_passes(item)
       elsif item.name != "Sulfuras, Hand of Ragnaros"
         normal_item(item)
       end

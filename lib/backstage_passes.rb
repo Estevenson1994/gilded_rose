@@ -1,7 +1,7 @@
 module Backstage_passes
 
     
-  def backstage_passes(item)
+  def update_backstage_passes(item)
     add_one_to_quality(item)
     add_one_to_quality(item) if less_than_11_days_to_sell(item)
     add_one_to_quality(item) if less_than_6_days_to_sell(item)

@@ -1,6 +1,6 @@
 module Aged_brie
 
-  def aged_brie(item)
+  def update_aged_brie(item)
     update_quality_if_before_sell_in(item)
     dont_let_quality_go_above_50(item)
     remove_one_day_from_sell_in(item)
