@@ -1,10 +1,11 @@
 require_relative 'aged_brie'
 require_relative 'backstage_passes'
 require_relative 'normal_item'
+require_relative 'conjured_item'
 
 class GildedRose
 
-  include Aged_brie, Backstage_passes, Normal_item
+  include Aged_brie, Backstage_passes, Normal_item, Conjured_item
 
   def initialize(items)
     @items = items
@@ -18,11 +19,7 @@ class GildedRose
       elsif item.name == "Backstage passes to a TAFKAL80ETC concert"
         update_backstage_passes(item)
       elsif item.name.match(/(?i)conjured/)
-        if item.sell_in > 0 && item.quality > 0
-          item.quality -= 2
-        elsif item.quality < 0
-          item.quality = 0
-        end
+        update_conjured_item(item)
       elsif item.name != "Sulfuras, Hand of Ragnaros"
         update_normal_item(item)
       end
