@@ -17,6 +17,12 @@ class GildedRose
         update_aged_brie(item)
       elsif item.name == "Backstage passes to a TAFKAL80ETC concert"
         update_backstage_passes(item)
+      elsif item.name.match(/(?i)conjured/)
+        if item.sell_in > 0 && item.quality > 0
+          item.quality -= 2
+        elsif item.quality < 0
+          item.quality = 0
+        end
       elsif item.name != "Sulfuras, Hand of Ragnaros"
         update_normal_item(item)
       end

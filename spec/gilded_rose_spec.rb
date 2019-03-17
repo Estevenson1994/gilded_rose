@@ -108,4 +108,19 @@ describe GildedRose do
       expect { gilded_rose.update_quality }.to change { items[0].quality }.by(0)
     end
   end
+
+  describe '#Conjured items' do
+    it 'quaility drops by 2 each day' do
+      items = [Item.new("Conjured item", 10, 10)]
+      gilded_rose = GildedRose.new(items)
+      expect { gilded_rose.update_quality }.to change { items[0].quality }.by(-2)
+    end
+
+    it 'quality does not drop below 0' do
+      items = [Item.new("Conjured item", 10, 0)]
+      gilded_rose = GildedRose.new(items)
+      expect { gilded_rose.update_quality }.to change { items[0].quality }.by(0)
+    end
+  end
+
 end
