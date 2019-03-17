@@ -1,8 +1,9 @@
 require_relative 'aged_brie'
+require_relative 'backstage_passes'
 
 class GildedRose
 
-  include Aged_brie
+  include Aged_brie, Backstage_passes
 
   def initialize(items)
     @items = items
@@ -31,14 +32,6 @@ class GildedRose
     item.quality = 50 if item.quality > 50
   end
 
-  def backstage_passes(item)
-    item.quality += 1
-    item.quality += 1 if item.sell_in < 11
-    item.quality += 1 if item.sell_in < 6
-    item.quality = 50 if item.quality > 50
-    item.quality = 0 if item.sell_in <= 0
-    item.sell_in -= 1
-  end
 
   def normal_item(item)
     item.quality -= 1 if item.quality > 0
